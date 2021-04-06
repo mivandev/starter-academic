@@ -61,7 +61,7 @@ social:
   icon_pack: fab
   link: https://www.linkedin.com/in/michiel-van-de-ven/
 - icon: stackoverflow
-  icon_pack: fa
+  icon_pack: academicicons
   link: https://stackoverflow.com/users/9002927/utq
 
 # Link to a PDF of your resume/CV.
