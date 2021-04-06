@@ -51,7 +51,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    style: monokai
+    pygmentsUseClasses: true 
     codeFences: false
     lineNoStart: 1
     lineNos: true
