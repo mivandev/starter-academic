@@ -51,6 +51,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
+    style: monokai
     codeFences: true
     lineNoStart: 1
     lineNos: true
