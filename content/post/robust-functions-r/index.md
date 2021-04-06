@@ -44,7 +44,7 @@ categories:
 
 ## Overview
 
-```r
+```
 # A gist for making custom functions more robust
 library(testthat)
 
