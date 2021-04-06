@@ -51,7 +51,11 @@ markup:
     renderer:
       unsafe: true
   highlight:
+    style: monokai
     codeFences: false
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
   tableOfContents:
     startLevel: 2
     endLevel: 3
@@ -74,15 +78,3 @@ related:
       weight: 100
     - name: categories
       weight: 70
-
-markup:
-  highlight:
-    codeFences: true
-    guessSyntax: true
-    hl_Lines: ''
-    lineNoStart: 1
-    lineNos: true
-    lineNumbersInTable: true
-    tabWidth: 4
-    noClasses: false
-
