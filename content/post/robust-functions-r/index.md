@@ -44,7 +44,7 @@ categories:
 
 ## Overview
 
-```r
+```r {linenos=table,hl_lines=[8,"15-17"],linenostart=1}
 # A gist for making custom functions more robust
 library(testthat)
 
