@@ -3,4 +3,4 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mivandev/starter-academic)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mivandev/starter-academic/master?style=plastic)
 
-Just a personal blog to structure my thoughts. The blog makes use of the academic theme for Hugo and deployed via Netlify.
+Just a personal blog to structure my thoughts. The blog makes use of the academic theme for Hugo and is deployed via Netlify.
