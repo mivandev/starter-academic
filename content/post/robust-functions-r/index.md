@@ -41,15 +41,13 @@ categories:
 - Testing
 - Debugging
 ---
-# Creating more robust functions in R
-
 In the code below, I demonstrate how easy it can be to improve the robustness
 of custom functions in R. First, I'll show how the function inputs can be 
 checked for validity and how including error and warnings into the function 
-can lead to easier debugging of faulty code. Second, a demonstration of two ways
-to check whether the function produces expected outcomes.
+can lead to easier debugging of faulty code. Second, we will move on to checking the output of functions,
+by introducing the `testthat` package and writing a simple unit test. 
 
-We will use a very simple function without error handling and without checking
+In this example, we will use a very simple function without error handling and without checking
 the function inputs and outputs. The function divides two vectors of numbers
 with length greater than zero.
 
