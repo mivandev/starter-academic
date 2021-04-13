@@ -101,7 +101,7 @@ corresponding error message to the console:
 ```r {linenos=table,linenostart=1}
 func_divider(1:3, 1:2)
 ```
-```r
+```
 Error in func_divider(1:3, 1:2) : 
   length(numerator) == length(denominator) is not TRUE
 ```
@@ -144,7 +144,7 @@ func_divider <- function(numerator, denominator, na.rm = FALSE) {
 
 func_divider(1, 0)
 ```
-```r
+```
 Dividing by zero is undefined[1] Inf
 ```
 
@@ -163,13 +163,13 @@ function initially.
 ```r {linenos=table,linenostart=1}
 func_divider(2, 4)
 ```
-```r
+```
 [1] 0.5
 ```
 ```r {linenos=table,linenostart=1}
 func_divider(0, 0)
 ```
-```r
+```
 [1] NaN
 Warning message:
 In func_divider(0, 0) : Dividing by zero is undefined
@@ -228,7 +228,7 @@ I named my unit test script `test_func_divider.R`. Now I can run my test by refe
 test_file("tests/test_func_divider.R")
 ```
 ```
-== Testing test_func_divider.R ===============================================================
+== Testing test_func_divider.R ==============================
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Done!
 ```
 Fortunately, `func_divider()` passes all tests! Now that the code itself is reasonably robust by checking both the function
