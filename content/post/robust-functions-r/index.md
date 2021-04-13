@@ -232,7 +232,7 @@ test_file("tests/test_func_divider.R")
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Done!
 ```
 Fortunately, `func_divider()` passes all tests! Eventhough the code itself is reasonably robust as both the function
-inputs and outputs are checked, we can still improve the robustness of the function by including function documentation. RStudio generates a [Roxygen2 skeleton](https://kbroman.org/pkg_primer/pages/docs.html) by pressing CTRL + SHIFT + ALT +R when the cursor is located inside a function.
+inputs and outputs are checked, we can still improve the robustness of the function by including function documentation. RStudio generates a [Roxygen2 skeleton](https://kbroman.org/pkg_primer/pages/docs.html) by pressing `CTRL` + `SHIFT` + `ALT` + `R` when the cursor is located inside a function.
 
 ```r {linenos=table,linenostart=1}
 #' Title: A custom function that divides two numbers or two number vectors of 
