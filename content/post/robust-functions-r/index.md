@@ -227,8 +227,8 @@ I named my unit test script `test_func_divider.R`. Now I can run my test by refe
 ```r {linenos=table,linenostart=1}
 test_file("tests/test_func_divider.R")
 ```
-```r 
-== Testing test_func_divider.R ==================================================================================================================================================================
+```
+== Testing test_func_divider.R ===============================================================
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Done!
 ```
 Fortunately, `func_divider()` passes all tests! Now that the code itself is reasonably robust by checking both the function
