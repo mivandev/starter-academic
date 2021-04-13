@@ -233,7 +233,7 @@ test_file("tests/test_func_divider.R")
 ```
 Fortunately, `func_divider()` passes all tests! Now that the code itself is reasonably robust by checking both the function
 inputs and testing its output, we can still improve the robustness of the function
-by including function documentation. RStudio generates a [Roxygen2 skeleton](Roxygen2 link: https://kbroman.org/pkg_primer/pages/docs.html) by
+by including function documentation. RStudio generates a [Roxygen2 skeleton](https://kbroman.org/pkg_primer/pages/docs.html) by
 pressing CTRL + SHIFT + ALT +R when the cursor is located inside a function.
 
 ```r {linenos=table,linenostart=1}
