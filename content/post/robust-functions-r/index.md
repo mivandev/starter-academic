@@ -100,13 +100,68 @@ func_divider <- function(numerator, denominator, na.rm = FALSE) {
 ```
 `stopifnot()` also tells you why a function input was not valid by prints the
 corresponding error message to the console:
-```r {linenos=table,linenostart=1, echo = TRUE, error = TRUE}
+```r {linenos=table,linenostart=1}
 func_divider(1:3, 1:2)
 ```
-```r {color:red;}
+```r {linenos=table,linenostart=1}
 Error in func_divider(1:3, 1:2) : 
   length(numerator) == length(denominator) is not TRUE
 ```
+There may also be cases when it is useful to let the function continue its
+execution and just produce a warning message. In our example function, it could
+be useful to print an warning message when the `denominator` vector contains a
+zero In the code below, the function is updated to print a warning message in
+the console when the value of zero is detected in the denominator.
+```r {linenos=table,hl_lines=["15-19"],linenostart=1}
+func_divider <- function(numerator, denominator, na.rm = FALSE) {
+  
+  
+  stopifnot(
+            # Are numerator and denominator of equal length?
+            length(numerator) == length(denominator),
+            # Are numerator and denominator both numeric?
+            is.numeric(numerator) & is.numeric(denominator),
+            # Is the length of numerator and denominator greater than zero?
+            length(numerator) > 0 & length(denominator) > 0,
+            # Is input for na.rm a Boolean and length 1?
+            is.logical(na.rm), length(na.rm) == 1
+            )
+  
+  # Does the denominator vector contain a zero?
+  #If so, print an warning message
+  if(0 %in% denominator) {
+    warning("Dividing by zero is undefined")
+  }
+
+  # Remove NA's from both input vectors when na.rm is set to TRUE.
+  if (na.rm == TRUE) {
+    miss <- is.na(numerator) | is.na(denominator)
+    numerator <- numerator[!miss]
+    denominator <- denominator[!miss]
+  }
+  
+  fraction <- numerator/denominator
+  return(fraction)
+}
+
+func_divider(1, 0)
+```
+```r {linenos=table,linenostart=1}
+Dividing by zero is undefined[1] Inf
+```
+
+When you divide by zero, R prints `inf` as the output. There are very few cases
+in which it is useful or intentional to divide by zero, so you could also swap
+out the warning with an error. However, it is not always easy to decide when to
+generate warnings or errors. As a rule of thumb, I'd advise to generate errors
+when executing the function otherwise would invalidate the output from the
+function. In that case, it would be a waste of time to continue execution.
+
+## Function outputs
+Function outputs can be checked interactively by running the below in the R
+console, but in my opinion, this is only useful when writing and testing the
+function initially. 
+
 
 ```r {linenos=table,linenostart=1}
 ```
