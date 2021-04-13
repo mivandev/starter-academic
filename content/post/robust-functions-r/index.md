@@ -12,7 +12,7 @@ projects: []
 date: "2021-04-06T00:00:00Z"
 
 # Date updated
-lastmod: "2021-04-06T00:00:00Z"
+lastmod: "2021-04-13T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: true
@@ -41,85 +41,70 @@ categories:
 - Testing
 - Debugging
 ---
+# Creating more robust functions in R
 
-## Overview
+In the code below, I demonstrate how easy it can be to improve the robustness
+of custom functions in R. First, I'll show how the function inputs can be 
+checked for validity and how including error and warnings into the function 
+can lead to easier debugging of faulty code. Second, a demonstration of two ways
+to check whether the function produces expected outcomes.
 
+We will use a very simple function without error handling and without checking
+the function inputs and outputs. The function divides two vectors of numbers
+with length greater than zero.
+
+```r {linenos=table,linenostart=1}
+func_divider <- function(numerator, denominator) {
+  
+  fraction <- numerator/denominator
+  return(fraction)
+}
+```
+## Validity of function inputs
+What if we want to protect ourselves from supplying this function with invalid
+inputs? There a number of situations we want to guard against, for instance:
+
+* Unequal lengths of both the `numerator` and `denominator` vectors;
+* An empty `denominator` vector or both input vectors empty;
+* Calculate using `NA` values by providing the option to remove these;
+* Incorrect data types.
+
+The `stopifnot()` function from base R provides functionality to evaluate function
+inputs and is a very useful first step to protect ourselves against illegal function
+inputs. `stopifnot()` also tells you why a function input was not valid, i.e.,
+which specified condition was not satisfied.
+```r {linenos=table,linenostart=1}
+func_divider <- function(numerator, denominator, na.rm = FALSE) {
+  
+  stopifnot(
+            # Are numerator and denominator of equal length?
+            length(numerator) == length(denominator),
+            # Are numerator and denominator both numeric?
+            is.numeric(numerator) & is.numeric(denominator),
+            # Is the length of numerator and denominator greater than zero?
+            length(numerator) > 0 & length(denominator) > 0,
+            # Is input for na.rm a Boolean and length 1?
+            is.logical(na.rm), length(na.rm) == 1
+            )
+
+  # Remove NA's from both input vectors when na.rm is set to TRUE.
+  if (na.rm == TRUE) {
+    miss <- is.na(numerator) | is.na(denominator)
+    numerator <- numerator[!miss]
+    denominator <- denominator[!miss]
+  }
+  
+  fraction <- numerator/denominator
+  return(fraction)
+}
+```
+`stopifnot()` also tells you why a function input was not valid by prints the
+corresponding error message to the console:
+```r {linenos=table,linenostart=1, echo = TRUE, error = TRUE}
+func_divider(1:3, 1:2)
+```
+
+```r {linenos=table,linenostart=1}
+```
 ```r {linenos=table,hl_lines=[8,"15-17"],linenostart=1}
-# A gist for making custom functions more robust
-library(testthat)
-
-# testthat provides a set of functions to check whether the result of the function
-# is as expected
-
-# A simple function with no warning or error messaging
-func_divider <- function(numerator, denominator, na.rm = FALSE) {
-  
-  stopifnot(is.logical(na.rm), length(na.rm) == 1)  # is input for na.rm a Boolean and length 1?
-  stopifnot(length(numerator) == length(denominator))         # Are numerator and denominator of equal length?
-  stopifnot(is.numeric(numerator) & is.numeric(denominator))  # Are numerator and denominator both numeric?
-  
-  if (na.rm == TRUE) {
-    miss <- is.na(numerator) | is.na(denominator)
-    numerator <- numerator[!miss]
-    denominator <- denominator[!miss]
-  }
-  
-  numerator / denominator
-}
-
-func_divider(2,4)
-func_divider(0,0) # By default division by zero returns NaN
-
-# Write a unit test for func_divider
-test_divider <- function() {
-  
-  expect_equal(func_divider(4, 2), 2) # 4/2 == 2
-  expect_equal(func_divider(4, 0), Inf) # 4/0 == Inf
-  expect_equal(func_divider(0, 0), NaN) # 4/0 == Inf
-  expect_type(func_divider(4, 2), "double")
-  expect_gt(func_divider(4, 2), func_divider(2, 2)) # 4/2 > 2/2
-  expect_lte(sum(func_divider(1:4, 4:1)),  # Can handle a vector as input, but can expects a
-             sum(func_divider(4:1, 1:4)))  # single logical value for the comparison
-  
-}
-
-test_divider()
-
-
-# Now that the code itself is reasonably robust by checking both the function
-# inputs and testing its output, we can still improve the function by including
-# function documentation. RStudio provides a template by pressing
-# ctrl + shift + alt + r when the cursor is located inside a function
-
-#' Title: A custom function that divides two numbers or two number vectors of 
-#' Title: equal length
-#' 
-#' @author : MyName
-#' @date: January 1, 1970
-#'
-#' @param numerator: A single number or vector of numbers, must be numeric
-#' @param denominator: A single number or vector of numbers, must be numeric
-#' @param na.rm : A boolean that specifies whether NaNs need to removed first.
-#'                Takes only one argument, with a default of FALSE
-#'
-#' 
-#' 
-#'
-#' @examples: func_divider(4, 2, na.rm = TRUE),
-#'            func_divider(seq(0, 0, length.out = 100), seq(0, 0, length.out = 100))
-func_divider <- function(numerator, denominator, na.rm = FALSE) {
-  
-  stopifnot(is.logical(na.rm), length(na.rm) == 1)  # is input for na.rm a Boolean and length 1?
-  stopifnot(length(numerator) == length(denominator))         # Are numerator and denominator of equal length?
-  stopifnot(is.numeric(numerator) & is.numeric(denominator))  # Are numerator and denominator both numeric?
-  
-  if (na.rm == TRUE) {
-    miss <- is.na(numerator) | is.na(denominator)
-    numerator <- numerator[!miss]
-    denominator <- denominator[!miss]
-  }
-  
-  numerator / denominator
-}
-
 ```
