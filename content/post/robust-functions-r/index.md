@@ -210,7 +210,7 @@ test_divider <- function() {
   expect_equal(func_divider(4, 0), Inf) # 4/0 == Inf
   
   # I also expect a warning when I divide by zero
-  expect_equal(func_divider(4, 0))
+  expect_warning(func_divider(4, 0))
   
   # I expect that the function output is of type 'double' 
   expect_type(func_divider(4, 2), "double")
