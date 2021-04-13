@@ -103,6 +103,10 @@ corresponding error message to the console:
 ```r {linenos=table,linenostart=1, echo = TRUE, error = TRUE}
 func_divider(1:3, 1:2)
 ```
+```r
+Error in func_divider(1:3, 1:2) : 
+  length(numerator) == length(denominator) is not TRUE
+```
 
 ```r {linenos=table,linenostart=1}
 ```
