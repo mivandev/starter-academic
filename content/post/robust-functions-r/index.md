@@ -58,7 +58,7 @@ func_divider <- function(numerator, denominator) {
   return(fraction)
 }
 ```
-## Validity of function inputs
+## Function inputs
 What if we want to protect ourselves from supplying this function with invalid
 inputs? There a number of situations we want to guard against, for instance:
 
