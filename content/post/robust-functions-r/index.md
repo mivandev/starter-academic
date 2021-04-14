@@ -201,35 +201,40 @@ A unit test for our example function could be something like this:
 # Load libraries
 library(testthat)
 
-test_divider <- function() {
-  
+test_that("Expecting certain values", {
   # I expect output of 2 when I divide 4 by 2
   expect_equal(func_divider(4, 2), 2)
-  
   # I expect an Inf value when I divide by zero
-  expect_equal(func_divider(4, 0), Inf) # 4/0 == Inf
-  
+  expect_equal(func_divider(4, 4), 1) # 4/0 == Inf
+})
+
+test_that("warning", {
   # I also expect a warning when I divide by zero
-  expect_warning(func_divider(4, 0))
-  
+  expect_warning(func_divider(4, 0), "Dividing by zero is undefined")
+})
+
+test_that("data type", {
   # I expect that the function output is of type 'double' 
   expect_type(func_divider(4, 2), "double")
-  
+})
+
+test_that("comparison", {
   # I expect that 4/2 is greater than 2/2
   expect_gt(func_divider(4, 2), func_divider(2, 2))
-  
-  # I expect an error when I input multiple values for argument 'na.rm'
+})
+
+test_that("error", {
+  # I expect that 4/2 is greater than 2/2
   expect_error(func_divider(1, 1, na.rm = c(TRUE, FALSE)))
-  
-}
+})
 ```
 I named my unit test script `test_func_divider.R`. Now I can run my test by referencing that script:
 ```r {linenos=table,linenostart=1}
 test_file("tests/test_func_divider.R")
 ```
 ```
-== Testing test_func_divider.R ==============================
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 0 ] Done!
+== Testing test_func_divider.R ====================
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 6 ] Done!
 ```
 Fortunately, `func_divider()` passes all tests! Eventhough the code itself is reasonably robust as both the function
 inputs and outputs are checked, we can still improve the robustness of the function by including function documentation. RStudio generates a [Roxygen2 skeleton](https://kbroman.org/pkg_primer/pages/docs.html) by pressing `CTRL` + `SHIFT` + `ALT` + `R` when the cursor is located inside a function.
