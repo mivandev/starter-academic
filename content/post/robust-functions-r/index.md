@@ -182,9 +182,7 @@ Otherwise, an error should be produced and execution stopped.
 
 The package `testthat`, authored by Hadley Wickham, provides a set of functions to check whether the result 
 of the function is as expected. Typically, an R script contains multiple custom
-functions that should be tested, and thus, multiple unit tests are required.
-
-You want to keep the unit tests themselves in separate R scripts, and it is good practice
+functions that should be tested, and thus, multiple unit tests are required. You want to keep the unit tests themselves in separate R scripts, and it is good practice
 to organize these unit tests in a separate folder. I put mine in folder `tests`.
 
 `testthat` provides a number of different ways to test the function output. For instance,
