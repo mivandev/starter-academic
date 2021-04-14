@@ -253,7 +253,7 @@ inputs and outputs are checked, we can still improve the robustness of the funct
 #' 
 #'
 #' @examples: func_divider(4, 2, na.rm = TRUE),
-#'            func_divider(seq(0, 0, length.out = 100), seq(0, 0, length.out = 100))
+#'            func_divider(seq(1, 200, length.out = 100), seq(5, 200, length.out = 100))
 
 func_divider <- function(numerator, denominator, na.rm = FALSE) {
   
