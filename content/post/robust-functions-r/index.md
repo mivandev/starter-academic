@@ -180,7 +180,7 @@ testing pieces of code is unit testing, in which a test is created for a piece o
 The unit test should tell the user whether the code is still fit for use. 
 Otherwise, an error should be produced and execution stopped.
 
-The package `testthat` provides a set of functions to check whether the result 
+The package `testthat`, authored by Hadley Wickham, provides a set of functions to check whether the result 
 of the function is as expected. Typically, an R script contains multiple custom
 functions that should be tested, and thus, multiple unit tests are required.
 
