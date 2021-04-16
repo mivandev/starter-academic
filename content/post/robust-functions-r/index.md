@@ -1,6 +1,6 @@
 ---
 title: Creating more robust functions in R
-subtitle: Fail early.
+subtitle: Help yourself
 
 # Summary for listings and search engines
 summary: Robust functions in R through testing function inputs and outputs.
@@ -12,7 +12,7 @@ projects: []
 date: "2021-04-06T00:00:00Z"
 
 # Date updated
-lastmod: "2021-04-13T00:00:00Z"
+lastmod: "2021-04-16T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false
@@ -41,7 +41,7 @@ categories:
 - Testing
 - Debugging
 ---
-In the code below, I demonstrate how easy it can be to improve the robustness
+Finding out why your R code does not work as expected can be quite annoying and time-consuming, as debugging is an area in R upon which can be improved. And given that R is a dynamically typed language, which means that type checking is only conducted at runtime. This means that writing robust custom functions is especially prudent, so that you'll have less errors and have an easier time debugging the errors you do get. In the code below, I demonstrate how easy it can be to improve the robustness
 of custom functions in R. First, I'll show how the function inputs can be 
 checked for validity and how including error and warnings into the function 
 can lead to easier debugging of faulty code. Second, we will move on to checking the output of functions,
