@@ -3,7 +3,7 @@ title: Creating a Discrete-Event Simulation for health economic analysis in Pyth
 subtitle: 
 
 # Summary for listings and search engines
-summary: Creating a Discrete-Event Simulation for health economic analysis in Python.
+summary: A Discrete-Event Simulation for health economic analysis in Python with SimPy and OOP.
 
 # Link this post with a project
 projects: []
