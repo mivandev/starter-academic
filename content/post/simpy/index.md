@@ -71,8 +71,7 @@ graph LR
     B[Treatment] --> C[Follow-up]
     B[Treatment] --> |Max five cycles| B[Treatment]
     C[Follow-up] --> D(End)
-    B[Treatment] --> E(Death)
-    
+    B[Treatment] --> E(Death)  
     
 ```
 # Code structure
